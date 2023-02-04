@@ -7,9 +7,7 @@
 - `PORT = 3000`
 - Inside `src/config` folder create a new file `config.json`  and then add the following piece of json
 
-```
-- once you've added your db config as listed above, go to the src folder from your terminal and execute this command
-`npx sequelize db:create`
+
 
 {
   "development": {
@@ -22,6 +20,15 @@
 }
 ```
 
+```
+- once you've added your db config as listed above, go to the src folder from your terminal and execute this command
+`npx sequelize db:create`
+and then execute
+
+`npx sequelize db:migrate`
+
+```
+
 ## DB Design 
   - Airplane Table
   - Flight
@@ -32,7 +39,9 @@
   - A city has many airports but one airport belongs to a city
   - One airport can have many flights, but a flight belongs to one airport 
 
-  
+
+
+
 
 /
     -src/
