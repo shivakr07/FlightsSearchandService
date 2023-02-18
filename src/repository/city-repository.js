@@ -4,10 +4,13 @@ const { City } = require('../models/index')
 class CityRepository{
     async createCity({ name }) {
         try {
-            const city = await City.create({ name });
+            const city = await City.create({ 
+                name 
+            });
             return city;
         } catch (error){
-            throw {error};
+            console.log("something went wrong in the repo layer");
+            throw {error}; 
         }
     }
 
@@ -18,10 +21,36 @@ class CityRepository{
                 id : cityId
             }
            });
+           return true;
         } catch (error){
+            console.log("something went wrong in the repo layer");
             throw {error};
             //why error : if you want to del an entry ehich doesn't exist
             // easy to catch error at db level
+        }
+    }
+
+    async updateCity(cityId, data){
+        try{
+            const city = await City.update(data,{
+                where: {
+                    id : cityId
+                }
+            });
+            return city;
+        } catch(error){
+            console.log("something went wrong in the repository layer");
+            throw(error);
+        }
+    }
+
+    async getCity(cityId){
+        try{
+            const city = await City.findByPk(cityid);
+            return city;
+        } catch (error){
+            console.log("something went wrong in the repo layer");
+            throw {error}; 
         }
     }
 }
